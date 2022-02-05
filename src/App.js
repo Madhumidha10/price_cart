@@ -1,25 +1,142 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+export default function App() {
+  let cart =[{
+    title:"FREE",
+    price:"0",
+    user:"Single User",
+    userEnabler:true,
+    storage:"5GB Storage",
+    storageEnabler:true,
+    publicProjects:"Unlimited Public Projects",
+    publicProjectsEnabler:true,
+    communityAccess:"Community Access",
+    communityAccessEnabler:true,
+    privateProjects:"Unlimited Private Projects",
+    privateProjectsEnabler:false,
+    phoneSupport:"Dedicated Phone Support",
+    phoneSupportEnabler:false,
+    subdomain:"Free Subdomain",
+    subdomainEnabler:false,
+    reports:"Monthly Status Reports",
+    reportsEnabler:false
+  }
+  
+  ,{
+    title:"PLUS",
+    price:"9",
+    user:"5 User",
+    userEnabler:true,
+    storage:"50GB Storage",
+    storageEnabler:true,
+    publicProjects:"Unlimited Public Projects",
+    publicProjectsEnabler:true,
+    communityAccess:"Community Access",
+    communityAccessEnabler:true,
+    privateProjects:"Unlimited Private Projects",
+    privateProjectsEnabler:true,
+    phoneSupport:"Dedicated Phone Support",
+    phoneSupportEnabler:true,
+    subdomain:"Free Subdomain",
+    subdomainEnabler:true,
+    reports:"Monthly Status Reports",
+    reportsEnabler:false
+  }
+  
+  ,{
+    title:"PRO",
+    price:"49",
+    user:"Unlimited User",
+    userEnabler:true,
+    storage:"150GB Storage",
+    storageEnabler:true,
+    publicProjects:"Unlimited Public Projects",
+    publicProjectsEnabler:true,
+    communityAccess:"Community Access",
+    communityAccessEnabler:true,
+    privateProjects:"Unlimited Private Projects",
+    privateProjectsEnabler:true,
+    phoneSupport:"Dedicated Phone Support",
+    phoneSupportEnabler:true,
+    subdomainPrefix:"Unlimited",
+    subdomain:"Free Subdomain",
+    subdomainEnabler:true,
+    reports:"Monthly Status Reports",
+    reportsEnabler:true
+  }]
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+       <section className="pricing py-5">
+         <div className="container">
+          <div className="row">
+             {cart.map(({title,price,user,userEnabler,storage,storageEnabler,publicProjects,publicProjectsEnabler,communityAccess,communityAccessEnabler,privateProjects,privateProjectsEnabler,phoneSupport,phoneSupportEnabler,subdomainPrefix,subdomain,subdomainEnabler,reportsEnabler,reports},index)=>
+               <Card key={index} title={title} price={price} user={user} userEnabler={userEnabler} storage={storage} 
+               storageEnabler={storageEnabler}  publicProjects={publicProjects} publicProjectsEnabler={publicProjectsEnabler}
+               communityAccess={communityAccess} communityAccessEnabler={communityAccessEnabler}
+               privateProjects={privateProjects} privateProjectsEnabler={privateProjectsEnabler}
+               phoneSupport={phoneSupport}  phoneSupportEnabler={phoneSupportEnabler}
+               subdomainPrefix={subdomainPrefix}  subdomain={subdomain}   subdomainEnabler={subdomainEnabler}
+               reportsEnabler={reportsEnabler}  reports={reports} 
+             /> )}
+           </div>
+         </div>
+        </section>
+      </div>
+
+      
   );
 }
 
-export default App;
+
+
+
+function Card({title,price,user,userEnabler,storage,storageEnabler,publicProjects,publicProjectsEnabler,communityAccess,communityAccessEnabler,privateProjects,privateProjectsEnabler,phoneSupport,phoneSupportEnabler,subdomainPrefix,subdomain,subdomainEnabler,reportsEnabler,reports},index)
+   {
+     return  <div key={index} className="col-lg-4">
+              <div className="card mb-5 mb-lg-0">
+               <div className="card-body">
+                  <h5 className="card-title text-muted text-uppercase text-center">{title}</h5>
+                  <h6 className="card-price text-center">${price}<span className="period">/month</span></h6>
+                  <hr/>
+                  <ul className="fa-ul">
+                    <li className={userEnabler?"":"text-muted"}><span className="fa-li"><i className={userEnabler?"fas fa-check":"fas fa-times"}></i></span>{title==="FREE"?<>{user}</>:<b>{user}</b>}</li>
+                    <li className={storageEnabler?"":"text-muted"}><span className="fa-li"><i className={storageEnabler?"fas fa-check":"fas fa-times"}></i></span>{storage}</li>
+                    <li className={publicProjectsEnabler?"":"text-muted"}><span className="fa-li"><i className={publicProjectsEnabler?"fas fa-check":"fas fa-times"}></i></span>{publicProjects}</li>
+                    <li className={communityAccessEnabler?"":"text-muted"}><span className="fa-li"><i className={communityAccessEnabler?"fas fa-check":"fas fa-times"}></i></span>{communityAccess}</li>
+                    <li className={privateProjectsEnabler?"":"text-muted"}><span className="fa-li"><i className={privateProjectsEnabler?"fas fa-check":"fas fa-times"}></i></span>{privateProjects}</li>
+                    <li className={phoneSupportEnabler?"":"text-muted"}><span className="fa-li"><i className={phoneSupportEnabler?"fas fa-check":"fas fa-times"}></i></span>{phoneSupport}</li>
+                    <li className={subdomainEnabler?"":"text-muted"}><span className="fa-li"><i className={subdomainEnabler?"fas fa-check":"fas fa-times"}></i></span><b>{subdomainPrefix} </b>{subdomain}</li>
+                    <li className={reportsEnabler?"":"text-muted"}><span className="fa-li"><i className={reportsEnabler?"fas fa-check":"fas fa-times"}></i></span>{reports}</li>
+                  </ul>
+                  <div className="d-grid">
+                    <a href="https://react-bootstrap.github.io/getting-started/introduction/" className="btn btn-primary text-uppercase">Button</a>
+                  </div>
+              </div>
+             </div>
+        </div>
+    //   <div class="col-lg-4" key={in>
+    //   <div class="card mb-5 mb-lg-0">
+    //     <div class="card-body">
+    //       <h5 class="card-title text-muted text-uppercase text-center">{title}</h5>
+    //       <h6 class="card-price text-center">${price}<span class="period">/month</span></h6>
+    //       <hr/>
+    //       <ul class="fa-ul">
+            
+    //         <li class={userEnabler?"":"text-muted"}><span class="fa-li"><i class={userEnabler?"fas fa-check":"fas fa-times"}></i></span>{title==="FREE"?<>{user}</>:<b>{user}</b>}</li>
+    //         <li class={storageEnabler?"":"text-muted"}><span class="fa-li"><i class={storageEnabler?"fas fa-check":"fas fa-times"}></i></span>{storage}</li>
+    //         <li class={publicProjectsEnabler?"":"text-muted"}><span class="fa-li"><i class={publicProjectsEnabler?"fas fa-check":"fas fa-times"}></i></span>{publicProjects}</li>
+    //         <li class={communityAccessEnabler?"":"text-muted"}><span class="fa-li"><i class={communityAccessEnabler?"fas fa-check":"fas fa-times"}></i></span>{communityAccess}</li>
+    //         <li class={privateProjectsEnabler?"":"text-muted"}><span class="fa-li"><i class={privateProjectsEnabler?"fas fa-check":"fas fa-times"}></i></span>{privateProjects}</li>
+    //         <li class={phoneSupportEnabler?"":"text-muted"}><span class="fa-li"><i class={phoneSupportEnabler?"fas fa-check":"fas fa-times"}></i></span>{phoneSupport}</li>
+    //         <li class={subdomainEnabler?"":"text-muted"}><span class="fa-li"><i class={subdomainEnabler?"fas fa-check":"fas fa-times"}></i></span><b>{subdomainPrefix} </b>{subdomain}</li>
+    //         <li class={reportsEnabler?"":"text-muted"}><span class="fa-li"><i class={reportsEnabler?"fas fa-check":"fas fa-times"}></i></span>{reports}</li>
+    //       </ul>
+    //       <div class="d-grid">
+    //         <a href="https://react-bootstrap.github.io/getting-started/introduction/" class="btn btn-primary text-uppercase">Button</a>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+  
+}
